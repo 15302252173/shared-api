@@ -1,0 +1,17 @@
+{
+  "name": "niu-shared-api",
+  "version": "1.0.0",
+  "description": "小牛×小八 共享工作台 API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "mysql2": "^3.22.3",
+    "sql.js": "^1.14.1",
+    "ssh2": "^1.17.0"
+  }
+}
