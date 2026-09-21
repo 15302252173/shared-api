@@ -59,13 +59,10 @@ jobs:
           cp "$ANDROID_HOME/build-tools/35.0.0/apksigner" artifact/build-tools/apksigner
           cp "$ANDROID_HOME/build-tools/35.0.0/zipalign" artifact/build-tools/zipalign
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" artifact/build-tools/lib/apksigner.jar
-          cp "$HOME/.android/debug.keystore" artifact/debug.keystore
           cat > artifact/README.txt <<'EOF'
           Temporary private-build materials.
           APK contains a placeholder TypeSafe key asset.
-          Debug keystore password: android
-          Alias: androiddebugkey
-          Key password: android
+          Signing keystore is generated locally after download.
           EOF
 
       - name: Upload build materials
