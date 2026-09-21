@@ -323,3 +323,15 @@ ss = ss.replace("Jev 聊天助手", "Jev 聊天助手 · Direct")
 strings_path.write_text(ss, encoding="utf-8")
 
 print("Patched Jev project for direct TypeSafe API.")
+
+
+# The upstream Gradle file contains a Windows-only fallback path which throws on Linux
+# even for debug builds. Replace it with a harmless nonexistent Unix path.
+gradle_path = root / "app/build.gradle.kts"
+g = gradle_path.read_text(encoding="utf-8")
+g = g.replace(
+    'System.getenv("JEV_KEYSTORE_PROPS") ?: "H:/android/keys/jev-release.properties"',
+    'System.getenv("JEV_KEYSTORE_PROPS") ?: "/tmp/nonexistent-jev-release.properties"'
+)
+gradle_path.write_text(g, encoding="utf-8")
+print("Patched Windows-only Gradle signing path.")
